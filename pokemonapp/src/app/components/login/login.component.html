@@ -1,0 +1,21 @@
+
+<h1>LogIn</h1>
+<form [formGroup]="form">
+  <input
+    type="text"
+    id="email"
+    formControlName="email"
+    placeholder="Digite o e-mail"
+  >
+  <input
+    type="password"
+    id="password"
+    formControlName="password"
+    placeholder="Digite o password"
+  >
+  <button
+    [disabled]="!form.valid"
+    (click)="getLogins()"
+    >Login
+  </button>
+</form>

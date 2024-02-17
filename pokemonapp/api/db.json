@@ -1,0 +1,29 @@
+{
+  "logins": [
+    {
+      "id": 1,
+      "email": "leo@leo.com",
+      "password": "teste"
+    },
+    {
+      "id": 2,
+      "email": "sabado@sabado.com",
+      "password": "teste"
+    },
+    {
+      "id": 3,
+      "email": "domingo@domingo.com",
+      "password": "testando"
+    },
+    {
+      "email": "lnsfalsim@gmail.com",
+      "password": "leonardobomdebola",
+      "id": 4
+    },
+    {
+      "email": "lnsfalsim@icloud.com",
+      "password": "leonardoehocara",
+      "id": 5
+    }
+  ]
+}
