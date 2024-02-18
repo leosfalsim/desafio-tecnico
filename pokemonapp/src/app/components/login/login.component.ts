@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   getLogins() {
     let user;
 
-    this.$loginService.getLogins().subscribe(response => {
+    this.$loginService.getLogins().subscribe((response: Array<Ilogin>) => {
       user = response.find((u: Ilogin) => {
         return u.email === this.form.value.email && u.password === this.form.value.password
       });

@@ -8,6 +8,10 @@ import { RegisterComponent } from './register/register.component';
 import { CardComponent } from './cards/cards.component';
 import { HeaderComponent } from './header/header.component';
 import { LeftMenuComponent } from './left-menu/leftmenu.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DeckDetailsComponent } from './deckdetails/deckdetails.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -15,19 +19,24 @@ import { LeftMenuComponent } from './left-menu/leftmenu.component';
     RegisterComponent,
     CardComponent,
     HeaderComponent,
-    LeftMenuComponent
+    LeftMenuComponent,
+    DeckDetailsComponent
   ],
   exports: [
     LoginComponent,
     RegisterComponent,
     CardComponent,
     HeaderComponent,
-    LeftMenuComponent
+    LeftMenuComponent,
+    DeckDetailsComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatIconModule
   ]
 })
 export class ComponentsModule { }

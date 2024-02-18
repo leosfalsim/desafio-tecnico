@@ -16,7 +16,12 @@ export class DashboardComponent implements OnInit {
     }
   ];
 
-  public currentRoute: any = {};
+  public currentRoute: any = {
+      id: -1,
+      route: "",
+      active: false
+  };
+
 
   constructor(private router: Router) { }
 

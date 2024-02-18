@@ -1,4 +1,5 @@
 export class Ilogin {
+  [x: string]: any;
   id!: number;
   email: string;
   password: string;
