@@ -32,7 +32,11 @@ export class RegisterComponent implements OnInit {
   }
 
   createLogin() {
-    let login = new Ilogin(this.form.value.email, this.form.value.password);
+    let login: Ilogin = {
+      email: this.form.value.email,
+      password:this.form.value.password
+    };
+
     this.$registerService.createLogin(login).subscribe((response: Ilogin) => {
       this.form.reset();
       alert('WOWWW! Login Created!');
