@@ -12,6 +12,11 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `json-server --watch api/db.json` for a fake backend. Navigate to `http://localhost:3000`. The page will display the objects representing the tables of a real database.
 
+You can use an existing user in the base. This user has a Deck Of Cards associated to him.
+
+email: usuario@usuario.com
+password: teste1
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
