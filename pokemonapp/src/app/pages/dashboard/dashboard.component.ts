@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,8 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  public routesApp: Array<any> = [
+    {
+      id: 1,
+      route: "/dashboard/deckofcards",
+      active: false
+    }
+  ];
 
-  ngOnInit(): void {}
+  public currentRoute: any = {};
+
+  constructor(private router: Router) { }
+
+  ngOnInit(): void {
+    this.checkRoute();
+  }
+
+  checkRoute() {
+    this.currentRoute = this.routesApp.find((r: any) => {
+      r.active = true;
+      return r.route === this.router.url;
+    });
+  }
+
 
 }

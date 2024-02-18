@@ -40,10 +40,10 @@ export class LoginComponent implements OnInit {
       });
 
       if(user) {
-        localStorage.set('login', user.email);
+        localStorage.setItem('login', user.email);
         this.form.reset();
         alert('WOWWW! User Found!');
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['dashboard']);
       }else {
         alert('User not found!');
       }

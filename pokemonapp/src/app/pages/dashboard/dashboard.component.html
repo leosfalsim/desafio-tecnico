@@ -1,2 +1,37 @@
-
-<h1>Dashboard Works!</h1>
+<div class="flex w-screen h-screen text-gray-700">
+  <app-leftmenu></app-leftmenu>
+  <div class="flex flex-col flex-grow">
+      <app-header></app-header>
+      <!-- grid -->
+      <!-- <div class="flex-grow p-6 overflow-auto bg-gray-200">
+          <div class="grid grid-cols-3 gap-6">
+              <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-2 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-2 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-3 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-2 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-2 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-3 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-2 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-1 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-2 bg-white border border-gray-300"></div>
+              <div class="h-24 col-span-3 bg-white border border-gray-300"></div>
+          </div>
+      </div> -->
+      <!-- end grid -->
+      <app-deckofcards *ngIf="currentRoute!.active"></app-deckofcards>
+  </div>
+</div>

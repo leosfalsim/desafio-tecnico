@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthorizationGuard } from '../guards/authorization.guard';
 
 //My Components
-
+import { HomeComponent } from './home/home.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DeckOfCardsComponent } from './deckOfCards/deckofcards.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,14 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthorizationGuard],
+    children: [
+      {
+        path: 'deckofcards',
+        component: DeckOfCardsComponent
+      }
+    ]
   },
   {
     path: '**',

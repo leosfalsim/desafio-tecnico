@@ -8,11 +8,13 @@ import { RoutingModule } from './routing.module';
 import { ComponentsModule } from '../components/components.module';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DeckOfCardsComponent } from './deckOfCards/deckofcards.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    DeckOfCardsComponent
   ],
   imports: [
     CommonModule,
