@@ -8,7 +8,7 @@ Angular Material version 16.0.1.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` or `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 Run `json-server --watch api/db.json` for a fake backend. Navigate to `http://localhost:3000`. The page will display the objects representing the tables of a real database.
 
