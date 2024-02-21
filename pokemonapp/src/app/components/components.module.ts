@@ -21,6 +21,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { SnackBarComponent } from './snackBar/snackBar.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { EditDeckFormComponent } from './edit-deck-form/edit-deck-form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     LeftMenuComponent,
     DeckDetailsComponent,
     NewdeckFormComponent,
-    SnackBarComponent
+    SnackBarComponent,
+    EditDeckFormComponent
   ],
   exports: [
     LoginComponent,
@@ -41,7 +43,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     LeftMenuComponent,
     DeckDetailsComponent,
     NewdeckFormComponent,
-    SnackBarComponent
+    SnackBarComponent,
+    EditDeckFormComponent
   ],
   imports: [
     CommonModule,

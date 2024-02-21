@@ -10,6 +10,8 @@ import { NewDeckFormService } from './service/newdeckform.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackBarComponent } from '../snackBar/snackBar.component';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-newdeckform',
@@ -39,7 +41,9 @@ export class NewdeckFormComponent implements OnInit {
     private $cardsService: CardService,
     private $newDeckFormService: NewDeckFormService,
     private formBuilder: FormBuilder,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private router: Router,
+    private dialogRef: MatDialogRef<NewdeckFormComponent>
   ) { }
 
   ngOnInit(): void {
@@ -122,18 +126,22 @@ export class NewdeckFormComponent implements OnInit {
       userEmail: localStorage.getItem('login') || ''
     };
 
-    this.$newDeckFormService.createNewDeck(deck).subscribe((response: any) => {
-      console.log(response);
-    });
-
     this.$newDeckFormService.createNewDeck(deck).subscribe({
       next: (response: any) => {
         this.openSnackBar('Deck of Cards created with success!');
+        this.closeDialog();
+
+        let currentUrl = this.router.url;
+        this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+            this.router.navigate([currentUrl]);
+        });
+
+
       },
       error: (error: HttpErrorResponse) => {
         this.openSnackBar('Error when creating a Deck of Cards');
       }
-    })
+    });
   }
 
   openSnackBar(message: string) {
@@ -142,5 +150,10 @@ export class NewdeckFormComponent implements OnInit {
       data: {message: message}
     });
   }
+
+  closeDialog() {
+    this.dialogRef.close();
+  }
+
 
 }

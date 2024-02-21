@@ -22,14 +22,13 @@ export class DeckOfCardsComponent implements OnInit {
   }
 
   createNewDeck() {
-      const dialogRef = this.dialog.open(NewdeckFormComponent, {
-        width: '100%',
-        height: '90%'
-      });
+    const dialogRef = this.dialog.open(NewdeckFormComponent, {
+      width: '100%',
+      height: '90%'
+    });
 
-      dialogRef.afterClosed().subscribe((result: any) => {
-      });
-
+    dialogRef.afterClosed().subscribe((result: any) => {
+    });
   }
 
 }

@@ -4,6 +4,8 @@ import { CardService } from './service/card.service';
 import { Ideck } from 'src/app/interfaces/Ideck';
 import { MatDialog } from '@angular/material/dialog';
 import { DeckDetailsComponent } from '../deckdetails/deckdetails.component';
+import { EditDeckFormComponent } from '../edit-deck-form/edit-deck-form.component';
+import { ICard } from 'src/app/interfaces/Icard';
 
 @Component({
   selector: 'app-cards',
@@ -33,7 +35,7 @@ export class CardComponent implements OnInit {
     }
   }
 
-  openDialog(id: number) {
+  viewDetails(id: number) {
     const dialogRef = this.dialog.open(DeckDetailsComponent);
 
     let card = this.cards.find((c: Ideck) => {
@@ -41,6 +43,18 @@ export class CardComponent implements OnInit {
     });
 
     dialogRef.componentInstance.deck = card!;
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+    });
+  }
+
+  editCard(card: Ideck) {
+    const dialogRef = this.dialog.open(EditDeckFormComponent, {
+      width: '100%',
+      height: '90%'
+    });
+
+    dialogRef.componentInstance.deck = card;
 
     dialogRef.afterClosed().subscribe((result: any) => {
     });
