@@ -12,8 +12,8 @@ import { DeckOfCardsComponent } from './deckOfCards/deckofcards.component';
 
 //Angular Material Components
 import {MatTabsModule} from '@angular/material/tabs';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
