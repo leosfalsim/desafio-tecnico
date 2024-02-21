@@ -29,6 +29,7 @@ export interface Data {
   images: Images2;
   tcgplayer: Tcgplayer;
   cardmarket: Cardmarket;
+  isCardSelected?: boolean;
 }
 
 export interface Ability {

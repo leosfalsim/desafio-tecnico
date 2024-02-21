@@ -1,0 +1,13 @@
+mat-form-field {
+  width: 100%;
+}
+
+::ng-deep .mat-mdc-card {
+    --mdc-elevated-card-container-elevation: none !important;
+  }
+
+::ng-deep .mdc-text-field
+{
+  background-color:white !important;
+  border-radius: 0 !important;
+}

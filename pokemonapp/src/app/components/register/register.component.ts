@@ -25,9 +25,11 @@ export class RegisterComponent implements OnInit {
   }
 
   createForm() {
+    const EMAILPATTERN: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
     this.form = this.formBuilder.group({
-      email: ['', Validators.compose([Validators.required])],
-      password: ['', Validators.compose([Validators.required])]
+      email: ['', [Validators.required, Validators.pattern(EMAILPATTERN)]],
+      password: ['', [Validators.required, Validators.minLength(3)]]
     });
   }
 
@@ -40,7 +42,7 @@ export class RegisterComponent implements OnInit {
     this.$registerService.createLogin(login).subscribe((response: Ilogin) => {
       this.form.reset();
       alert('WOWWW! Login Created!');
-      this.router.navigate(['/home']);
+      window.location.reload();
     });
   }
 }

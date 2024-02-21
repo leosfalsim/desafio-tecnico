@@ -1,3 +1,19 @@
 
-<app-login></app-login>
-<app-register></app-register>
+
+<div class="flex justify-center items-center h-screen">
+  <div class="grid-cols-6">
+    <img
+      class="mx-auto h-20 w-20 mb-5"
+      src="https://m.media-amazon.com/images/I/614ngmgsIcL._AC_UF894,1000_QL80_.jpg"
+      alt="PokemonApp"
+    />
+    <mat-tab-group>
+      <mat-tab label="First">
+        <app-login></app-login>
+      </mat-tab>
+      <mat-tab label="Second">
+        <app-register></app-register>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

@@ -16,7 +16,10 @@ export class CardComponent implements OnInit {
 
   public cards: Array<Ideck> = [];
 
-  constructor(private $cardsService: CardService, public dialog: MatDialog) { }
+  constructor(
+    private $cardsService: CardService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.getCards();
@@ -41,5 +44,12 @@ export class CardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: any) => {
     });
+  }
+
+  deleteCard(id: number) {
+    this.$cardsService.deleteCardById(id).subscribe((response: any) => {
+      this.cards = response;
+    });
+    this.getCards();
   }
 }

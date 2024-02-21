@@ -8,10 +8,19 @@ import { RegisterComponent } from './register/register.component';
 import { CardComponent } from './cards/cards.component';
 import { HeaderComponent } from './header/header.component';
 import { LeftMenuComponent } from './left-menu/leftmenu.component';
-import {MatButtonModule} from '@angular/material/button';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { DeckDetailsComponent } from './deckdetails/deckdetails.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
+import { NewdeckFormComponent } from './newdeckform/newdeckform.component';
+
+import {MatTableModule} from '@angular/material/table';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { SnackBarComponent } from './snackBar/snackBar.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -20,7 +29,9 @@ import {MatIconModule} from '@angular/material/icon';
     CardComponent,
     HeaderComponent,
     LeftMenuComponent,
-    DeckDetailsComponent
+    DeckDetailsComponent,
+    NewdeckFormComponent,
+    SnackBarComponent
   ],
   exports: [
     LoginComponent,
@@ -28,7 +39,9 @@ import {MatIconModule} from '@angular/material/icon';
     CardComponent,
     HeaderComponent,
     LeftMenuComponent,
-    DeckDetailsComponent
+    DeckDetailsComponent,
+    NewdeckFormComponent,
+    SnackBarComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +49,13 @@ import {MatIconModule} from '@angular/material/icon';
     ReactiveFormsModule,
     MatButtonModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatTableModule,
+    MatCheckboxModule,
+    MatSnackBarModule
   ]
 })
 export class ComponentsModule { }

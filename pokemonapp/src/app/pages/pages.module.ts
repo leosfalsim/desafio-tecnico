@@ -10,6 +10,11 @@ import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DeckOfCardsComponent } from './deckOfCards/deckofcards.component';
 
+//Angular Material Components
+import {MatTabsModule} from '@angular/material/tabs';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -19,7 +24,10 @@ import { DeckOfCardsComponent } from './deckOfCards/deckofcards.component';
   imports: [
     CommonModule,
     RoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    MatTabsModule,
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class PagesModule { }
