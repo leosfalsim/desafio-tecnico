@@ -1,0 +1,122 @@
+<h2 mat-dialog-title>Details</h2>
+<mat-dialog-content class="mat-typography hidden">
+  <div class="grid space-x-1 lg:grid-cols-4 p-4 gap-2 h-100">
+    <div *ngFor="let card of deck.cards" class="bg-white border-2 border-gray-400 rounded">
+      <div class="bg-white">
+        <img class="w-full" src="{{card.images.small}}" alt="{{card.name}}">
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2 text-cyan-700">{{card.name}}</div>
+          <mat-tab-group>
+            <mat-tab class="text-xs" label="About">
+              <div class="grid grid-col-1 mt-5">
+                <p class="text-gray-700 text-xs">
+                  Level:
+                  <span class="font-bold">
+                    {{card.level}}
+                  </span>
+                </p>
+                <p class="text-gray-700 text-xs">
+                  HP:
+                  <span class="font-bold">
+                    {{card.hp}}
+                  </span>
+                </p>
+                <p class="text-gray-700 text-xs">
+                  Super Type:
+                  <span class="font-bold">
+                    {{card.supertype}}
+                  </span>
+                </p>
+                <p class="text-gray-700 text-xs">
+                  Evolves From:
+                  <span class="font-bold">
+                    {{card.evolvesFrom}}
+                  </span>
+                </p>
+                <p class="text-gray-700 text-xs">
+                  Rarity:
+                  <span class="font-bold">
+                    {{card.rarity}}
+                  </span>
+                </p>
+                <p class="text-gray-700 text-xs">
+                  Price:
+                  <span class="font-bold">
+                    € {{card.cardmarket.prices.trendPrice}}
+                  </span>
+                </p>
+              </div>
+            </mat-tab>
+            <mat-tab label="Weaknesses">
+              <div *ngIf="card.weaknesses">
+                <div *ngFor="let weakness of card.weaknesses" class="grid grid-col-1 mt-5">
+                  <p class="text-gray-700 text-xs">
+                    Type:
+                    <span class="font-bold">
+                      {{weakness.type}}
+                    </span>
+                  </p>
+                  <p class="text-gray-700 text-xs">
+                    Type:
+                    <span class="font-bold">
+                      {{weakness.value}}
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab label="Attacks">
+              <div *ngIf="card.attacks">
+                <div *ngFor="let attack of card.attacks; index as i;" class="grid grid-col-1 mt-5">
+                  <p *ngIf="card.attacks.length > 1" class="text-lime-500 text-sm font-bold">
+                    Attack: {{i + 1}}
+                  </p>
+                  <p class="text-gray-700 text-xs">
+                    Name:
+                    <span class="font-bold">
+                      {{attack.name}}
+                    </span>
+                  </p>
+                  <div *ngIf="attack.cost">
+                    <p *ngFor="let c of attack.cost; index as i;" class="text-gray-700 text-xs">
+                      {{i + 1}}:
+                      <span class="font-bold">
+                        {{c}}
+                      </span>
+                    </p>
+                  </div>
+                  <p class="text-gray-700 text-xs">
+                    Converted Energy Cost:
+                    <span class="font-bold">
+                      {{attack.convertedEnergyCost}}
+                    </span>
+                  </p>
+                  <p class="text-gray-700 text-xs">
+                    Damage:
+                    <span class="font-bold">
+                      {{attack.damage}}
+                    </span>
+                  </p>
+                  <p class="text-gray-700 text-xs text-justify">
+                    Description:
+                    <span class="font-bold">
+                      {{attack.text}}
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button
+    mat-raised-button
+    color="primary"
+    mat-dialog-close>
+      Close
+  </button>
+</mat-dialog-actions>

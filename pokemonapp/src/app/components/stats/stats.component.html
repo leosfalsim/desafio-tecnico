@@ -1,0 +1,94 @@
+
+
+
+
+<div class="grid grid-cols-1 p-4" *ngIf="stats.totalOfCards > 0">
+  <span class="font-bold text-3xl">Cards Stats</span>
+</div>
+<div class="grid space-x-1 lg:grid-cols-6 p-4 gap-2" *ngIf="stats.totalOfCards > 0">
+  <div>
+    <div class="bg-white">
+      <div class="px-6 py-4 bg-gray-100 rounded">
+        <div class="font-bold text-base mb-2 text-center">Total of Cards</div>
+        <p class="text-sm text-center">
+          <span class="font-normal text-4xl text-teal-500">
+            {{ stats.totalOfCards ? stats.totalOfCards : 0 }}
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="bg-white">
+      <div class="px-6 py-4 bg-gray-100 rounded">
+        <div class="font-bold text-base mb-2 text-center">Number of Decks</div>
+        <p class="text-sm text-center">
+          <span class="font-normal text-4xl text-teal-500">
+            {{ stats.numberOfDecks ? stats.numberOfDecks : 0 }}
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="bg-white">
+      <div class="px-6 py-4 bg-gray-100 rounded">
+        <div class="font-bold text-base mb-2 text-center">Number of Cards Selected</div>
+        <p class="text-sm text-center">
+          <span class="font-normal text-4xl text-teal-500">
+            {{ stats.numberOfCardsSelected ? stats.numberOfCardsSelected : 0 }}
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="bg-white">
+      <div class="px-6 py-4 bg-gray-100 rounded">
+        <div class="font-bold text-base mb-2 text-center">Average HP</div>
+        <p class="text-sm text-center">
+          <span class="font-normal text-4xl text-teal-500">
+            {{ stats.totalHP && stats.numberOfCardsSelected ? ((stats.totalHP / stats.numberOfCardsSelected) | number:'1.0-0') : 0.0 }}
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="bg-white">
+      <div class="px-6 py-4 bg-gray-100 rounded">
+        <div class="font-bold text-base mb-2 text-center">High Level Card</div>
+        <p class="text-sm text-center">
+          <span class="font-normal text-4xl text-teal-500">
+            {{ stats.highLevelCard ? stats.highLevelCard : 0}}
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="bg-white">
+      <div class="px-6 py-4 bg-gray-100 rounded">
+        <div class="font-bold text-base mb-2 text-center">Card Average Price</div>
+        <p class="text-sm text-center">
+          <span class="font-normal text-4xl text-teal-500">
+            € {{
+              stats.totalPrice && stats.numberOfCardsSelected ?
+              ((stats.totalPrice / stats.numberOfCardsSelected) | number:'1.0-2')
+              : '0.00'
+            }}
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- loader -->
+<div *ngIf="stats.totalOfCards <= 0" class="flex items-center justify-center h-screen">
+  <div class="relative">
+      <div class="h-24 w-24 rounded-full border-t-8 border-b-8 border-gray-200"></div>
+      <div class="absolute top-0 left-0 h-24 w-24 rounded-full border-t-8 border-b-8 border-blue-500 animate-spin">
+      </div>
+  </div>
+</div>

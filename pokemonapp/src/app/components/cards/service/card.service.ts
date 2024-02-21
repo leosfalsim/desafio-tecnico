@@ -3,8 +3,8 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
-import { Data, ICard } from "src/app/interfaces/Icard";
-import { Ideck } from "src/app/interfaces/Ideck";
+import { ICard } from "src/app/interfaces/ICard";
+import { IDeck } from "src/app/interfaces/IDeck";
 
 @Injectable({
   providedIn: 'root'
@@ -12,22 +12,20 @@ import { Ideck } from "src/app/interfaces/Ideck";
 
 export class CardService {
 
-  public allCards: Array<Data> = [];
-
   constructor(
     private _http: HttpClient
   ) {}
 
   getAllCards(): Observable<ICard>{
-    return this._http.get<ICard>('https://api.pokemontcg.io/v2/cards/');
+    return this._http.get<ICard>(`${environment.urlPokemonTCG}/cards/`);
   }
 
-  getCardsByUser(userEmail: string): Observable<Array<Ideck>>{
-    return this._http.get<Array<Ideck>>(`http://localhost:3000/decks?userEmail=${userEmail}`);
+  getCardsByUser(userEmail: string): Observable<Array<IDeck>>{
+    return this._http.get<Array<IDeck>>(`${environment.urlLocal}/decks?userEmail=${userEmail}`);
   }
 
   deleteCardById(id: number): Observable<any>{
-    return this._http.delete<any>(`http://localhost:3000/decks/${id}`);
+    return this._http.delete<any>(`${environment.urlLocal}/decks/${id}`);
   }
 }
 

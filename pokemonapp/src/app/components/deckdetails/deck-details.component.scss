@@ -1,0 +1,12 @@
+::ng-deep .mat-mdc-tab-body-content {
+  overflow: hidden !important;
+}
+
+::ng-deep .mdc-tab__text-label {
+  font-size: 10px !important;
+  font-weight: bold !important;
+}
+
+::ng-deep .mat-mdc-dialog-content {
+  max-height: 76vh !important;
+}

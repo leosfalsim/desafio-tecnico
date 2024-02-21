@@ -1,44 +1,45 @@
 export interface ICard {
   count: number;
-  data: Data[];
+  data: IData[];
   page: number;
   pageSize: number;
   totalCount: number;
 }
 
-export interface Data {
+export interface IData {
   id: string;
   name: string;
   supertype: string;
   subtypes: string[];
+  level: number;
   hp: string;
   types: string[];
   evolvesFrom: string;
-  abilities: Ability[];
-  attacks: Attack[];
-  weaknesses: Weakness[];
+  abilities: IAbility[];
+  attacks: IAttack[];
+  weaknesses: IWeakness[];
   retreatCost: string[];
   convertedRetreatCost: number;
-  set: Set;
+  set: ISet;
   number: string;
   artist: string;
   rarity: string;
   flavorText: string;
   nationalPokedexNumbers: number[];
-  legalities: Legalities2;
-  images: Images2;
-  tcgplayer: Tcgplayer;
-  cardmarket: Cardmarket;
+  legalities: ILegalities2;
+  images: IImages2;
+  tcgplayer: ITcgplayer;
+  cardmarket: ICardmarket;
   isCardSelected?: boolean;
 }
 
-export interface Ability {
+export interface IAbility {
   name: string;
   text: string;
   type: string;
 }
 
-export interface Attack {
+export interface IAttack {
   name: string;
   cost: string[];
   convertedEnergyCost: number;
@@ -46,58 +47,58 @@ export interface Attack {
   text: string;
 }
 
-export interface Weakness {
+export interface IWeakness {
   type: string;
   value: string;
 }
 
-export interface Set {
+export interface ISet {
   id: string;
   name: string;
   series: string;
   printedTotal: number;
   total: number;
-  legalities: Legalities
+  legalities: ILegalities
   ptcgoCode: string;
   releaseDate: string;
   updatedAt: string;
-  images: Images;
+  images: IImages;
 }
 
-export interface Legalities {
+export interface ILegalities {
   unlimited: string;
   standard: string;
   expanded: string;
 }
 
-export interface Images {
+export interface IImages {
   symbol: string;
   logo: string;
 }
 
-export interface Legalities2 {
+export interface ILegalities2 {
   unlimited: string;
   standard: string;
   expanded: string;
 }
 
-export interface Images2 {
+export interface IImages2 {
   small: string;
   large: string;
 }
 
-export interface Tcgplayer {
+export interface ITcgplayer {
   url: string;
   updatedAt: string;
-  prices: Prices;
+  prices: IPrices;
 }
 
-export interface Prices {
-  normal: Normal;
-  reverseHolofoil: ReverseHolofoil;
+export interface IPrices {
+  normal: INormal;
+  reverseHolofoil: IReverseHolofoil;
 }
 
-export interface Normal {
+export interface INormal {
   low: number;
   mid: number;
   high: number;
@@ -105,7 +106,7 @@ export interface Normal {
   directLow: number;
 }
 
-export interface ReverseHolofoil {
+export interface IReverseHolofoil {
   low: number;
   mid: number;
   high: number;
@@ -113,13 +114,13 @@ export interface ReverseHolofoil {
   directLow: number;
 }
 
-export interface Cardmarket {
+export interface ICardmarket {
   url: string;
   updatedAt: string;
-  prices: Prices2;
+  prices: IPrices2;
 }
 
-export interface Prices2 {
+export interface IPrices2 {
   averageSellPrice: number;
   lowPrice: number;
   trendPrice: number;

@@ -12,10 +12,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `json-server --watch api/db.json` for a fake backend. Navigate to `http://localhost:3000`. The page will display the objects representing the tables of a real database.
 
-You can use an existing user in the base. This user has a Deck Of Cards associated to him.
-
-email: usuario@usuario.com
-password: teste1
+You should create a user to accces the application.
 
 ## Code scaffolding
 
@@ -39,4 +36,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Notes
 
-This project is incomplete.
+This project is Complete.

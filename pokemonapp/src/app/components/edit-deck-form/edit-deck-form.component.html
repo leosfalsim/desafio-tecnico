@@ -20,7 +20,7 @@
           color="primary"
           [disabled]="!form.valid || numberOfCardsOnDeck < 24"
           (click)="editDeck()"
-          class="ml-3"
+          class="ml-3 cursor-pointer"
           >Edit Deck</button>
       </form>
       <div class="p-0">
@@ -71,7 +71,7 @@
       <ng-container matColumnDef="select">
         <th mat-header-cell *matHeaderCellDef> Select </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-button class="justify-items-center" (click)="addCardToDeck(element)" [disabled]="numberOfCardsOnDeck >= 60 && !element.isCardSelected">
+          <button mat-button class="justify-items-center cursor-pointer" (click)="addCardToDeck(element)" [disabled]="numberOfCardsOnDeck >= 60 && !element.isCardSelected">
             <mat-icon *ngIf="!element.isCardSelected" [ngClass]="numberOfCardsOnDeck >= 60 ? 'text-grey' : 'text-green-500'">add_circle</mat-icon>
             <mat-icon *ngIf="element.isCardSelected" class="text-red-600">remove_circle</mat-icon>
           </button>
@@ -81,6 +81,14 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
+  <mat-dialog-actions align="end">
+    <button
+      mat-raised-button
+      color="primary"
+      mat-dialog-close>
+        Close
+    </button>
+  </mat-dialog-actions>
 </div>
 
 <!-- loader -->

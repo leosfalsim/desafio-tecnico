@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { NewdeckFormComponent } from 'src/app/components/newdeckform/newdeckform.component';
+import { ActivatedRoute } from '@angular/router';
+import { NewdeckFormComponent } from 'src/app/components/newdeckform/new-deck-form.component';
 
 @Component({
   selector: 'app-deckofcards',
@@ -10,11 +11,16 @@ import { NewdeckFormComponent } from 'src/app/components/newdeckform/newdeckform
 export class DeckOfCardsComponent implements OnInit {
 
   public userEmail: string = "";
+  public componentName: string = '';
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
     this.getCurrentUser();
+    this.componentName = this.route.firstChild?.component?.name!;
   }
 
   getCurrentUser() {

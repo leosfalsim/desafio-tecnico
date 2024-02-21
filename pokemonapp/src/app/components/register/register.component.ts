@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 import { RegisterService } from './service/register.service';
-import { Ilogin } from 'src/app/interfaces/Ilogin';
+import { ILogin } from 'src/app/interfaces/ILogin';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarComponent } from '../snackBar/snack-bar.component';
 
 @Component({
   selector: 'app-register',
@@ -14,10 +16,12 @@ export class RegisterComponent implements OnInit {
 
   public form!: FormGroup;
 
+  public durationInSeconds: number = 5;
+
   constructor(
     private $registerService: RegisterService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -34,15 +38,27 @@ export class RegisterComponent implements OnInit {
   }
 
   createLogin() {
-    let login: Ilogin = {
+    let login: ILogin = {
       email: this.form.value.email,
       password:this.form.value.password
     };
 
-    this.$registerService.createLogin(login).subscribe((response: Ilogin) => {
-      this.form.reset();
-      alert('WOWWW! Login Created!');
-      window.location.reload();
+    this.$registerService.createLogin(login).subscribe({
+      next: (response: ILogin) => {
+        this.form.reset();
+        this.openSnackBar('Login created with succesful!');
+        window.location.reload();
+      },
+      error: (error: HttpErrorResponse) => {
+        this.openSnackBar('Error creating login');
+      }
+    });
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.openFromComponent(SnackBarComponent, {
+      duration: this.durationInSeconds * 1000,
+      data: {message: message}
     });
   }
 }

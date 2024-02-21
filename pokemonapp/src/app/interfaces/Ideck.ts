@@ -1,8 +1,8 @@
-import { Data } from "./Icard";
+import { IData } from "./ICard";
 
-export interface Ideck {
+export interface IDeck {
   id?: number;
-  cards: Data[];
+  cards: IData[];
   name: string;
   userEmail: string;
 }

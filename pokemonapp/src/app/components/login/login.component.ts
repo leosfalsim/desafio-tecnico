@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 import { LoginService } from './service/login.service';
-import { Ilogin } from 'src/app/interfaces/Ilogin';
+import { ILogin } from 'src/app/interfaces/ILogin';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { min } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarComponent } from '../snackBar/snack-bar.component';
 
 @Component({
   selector: 'app-login',
@@ -15,10 +17,13 @@ export class LoginComponent implements OnInit {
 
   public form!: FormGroup;
 
+  public durationInSeconds: number = 5;
+
   constructor(
     private $loginService: LoginService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -35,30 +40,36 @@ export class LoginComponent implements OnInit {
   }
 
   doLogin() {
-    this.$loginService.getLogins().subscribe(
-      (response: Array<Ilogin>) => {
+    this.$loginService.getLogins().subscribe({
+      next: (response: Array<ILogin>) => {
         this.findingByUser(response);
       },
-      (error) => {
-        console.error('Error fetching logins:', error);
-        alert('An error occurred while logging in. Please try again later.');
+      error: (error: HttpErrorResponse) => {
+        this.openSnackBar('Error getting logins');
       }
-    );
+    });
   }
 
-  findingByUser(response: Array<Ilogin>) {
+  findingByUser(response: Array<ILogin>) {
     const user = response.find(u => u.email === this.form.value.email && u.password === this.form.value.password);
     if (user) {
       this.loggingUser(user);
     } else {
-      alert('User not found!');
+      this.openSnackBar('User not found!');
     }
   }
 
-  loggingUser(user: Ilogin) {
+  loggingUser(user: ILogin) {
     localStorage.setItem('login', user.email);
     this.form.reset();
-    alert('WOWWW! User Found!');
+    this.openSnackBar('Login Sucessful');
     this.router.navigate(['dashboard']);
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.openFromComponent(SnackBarComponent, {
+      duration: this.durationInSeconds * 1000,
+      data: {message: message}
+    });
   }
 }

@@ -6,6 +6,7 @@ import { AuthorizationGuard } from '../guards/authorization.guard';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DeckOfCardsComponent } from './deckOfCards/deckofcards.component';
+import { StatsComponent } from '../components/stats/stats.component';
 
 const routes: Routes = [
   {
@@ -23,8 +24,21 @@ const routes: Routes = [
     canActivate: [AuthorizationGuard],
     children: [
       {
+        path: '',
+        redirectTo: 'stats',
+        pathMatch: 'full',
+      },
+      {
         path: 'deckofcards',
         component: DeckOfCardsComponent
+      },
+      {
+        path: 'stats',
+        component: StatsComponent
+      },
+      {
+        path: '**',
+        redirectTo: 'dashboard'
       }
     ]
   },

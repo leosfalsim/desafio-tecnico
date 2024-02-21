@@ -7,21 +7,23 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CardComponent } from './cards/cards.component';
 import { HeaderComponent } from './header/header.component';
-import { LeftMenuComponent } from './left-menu/leftmenu.component';
+import { LeftMenuComponent } from './left-menu/left-menu.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { DeckDetailsComponent } from './deckdetails/deckdetails.component';
+import { DeckDetailsComponent } from './deckdetails/deck-details.component';
 import { MatIconModule } from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
-import { NewdeckFormComponent } from './newdeckform/newdeckform.component';
+import { NewdeckFormComponent } from './newdeckform/new-deck-form.component';
 
 import {MatTableModule} from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import { SnackBarComponent } from './snackBar/snackBar.component';
+import { SnackBarComponent } from './snackBar/snack-bar.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { EditDeckFormComponent } from './edit-deck-form/edit-deck-form.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { StatsComponent } from './stats/stats.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { EditDeckFormComponent } from './edit-deck-form/edit-deck-form.component
     DeckDetailsComponent,
     NewdeckFormComponent,
     SnackBarComponent,
-    EditDeckFormComponent
+    EditDeckFormComponent,
+    StatsComponent
   ],
   exports: [
     LoginComponent,
@@ -44,7 +47,8 @@ import { EditDeckFormComponent } from './edit-deck-form/edit-deck-form.component
     DeckDetailsComponent,
     NewdeckFormComponent,
     SnackBarComponent,
-    EditDeckFormComponent
+    EditDeckFormComponent,
+    StatsComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +62,8 @@ import { EditDeckFormComponent } from './edit-deck-form/edit-deck-form.component
     MatCardModule,
     MatTableModule,
     MatCheckboxModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTabsModule
   ]
 })
 export class ComponentsModule { }

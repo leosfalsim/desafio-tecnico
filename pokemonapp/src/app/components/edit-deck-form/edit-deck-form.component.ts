@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Data, ICard } from 'src/app/interfaces/Icard';
+import { IData, ICard } from 'src/app/interfaces/ICard';
 
 import { CardService } from '../cards/service/card.service';
 
 import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Ideck } from 'src/app/interfaces/Ideck';
+import { IDeck } from 'src/app/interfaces/IDeck';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnackBarComponent } from '../snackBar/snackBar.component';
+import { SnackBarComponent } from '../snackBar/snack-bar.component';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -21,9 +21,9 @@ import { EditDeckFormService } from './service/edit-deck-form.service';
 
 export class EditDeckFormComponent implements OnInit {
 
-  public cards: Array<Data> = [];
+  public cards: Array<IData> = [];
 
-  public deck: Ideck = {
+  public deck: IDeck = {
     id: -1,
     cards: [],
     name: '',
@@ -31,7 +31,7 @@ export class EditDeckFormComponent implements OnInit {
   };
 
   public displayedColumns: string[] = ['images', 'name', 'supertype', 'level', 'hp', 'rarity', 'select'];
-  public dataSource = new MatTableDataSource<Data>();
+  public dataSource = new MatTableDataSource<IData>();
 
   public form!: FormGroup;
 
@@ -86,41 +86,41 @@ export class EditDeckFormComponent implements OnInit {
     });
   }
 
-  applyFilter(event: Event) {
+  applyFilter(event?: Event) {
     this.dataSource.filterPredicate = function(data, filter: string): boolean {
       return data.name.toLowerCase().includes(filter);
     };
 
-    this.filterValue = (event.target as HTMLInputElement).value;
+    this.filterValue = event ? (event.target as HTMLInputElement).value : this.filterValue;
     this.filterValue = this.filterValue.trim().toLowerCase();
     this.dataSource.filter = this.filterValue;
   }
 
-  setSelectionFalseToCards(cards: Array<Data>) {
-    cards.map((c: Data) => {
+  setSelectionFalseToCards(cards: Array<IData>) {
+    cards.map((c: IData) => {
       c.isCardSelected = false;
     });
     return cards;
   }
 
-  addCardToDeck(card: Data) {
+  addCardToDeck(card: IData) {
 
     if(this.checkIfHas4CardsWithSameNameAdded(card))
     return;
 
-    this.cards.map((c: Data) => {
+    this.cards.map((c: IData) => {
       if(card.id === c.id) {
         c.isCardSelected = !c.isCardSelected;
       }
     });
 
-    this.numberOfCardsOnDeck = this.cards.filter((c: Data) => c.isCardSelected).length;
+    this.numberOfCardsOnDeck = this.cards.filter((c: IData) => c.isCardSelected).length;
 
     this.updateDataSource(this.cards);
   }
 
-  checkIfHas4CardsWithSameNameAdded(card: Data): boolean {
-    this.numberOfCardsWithSameName = this.cards.filter((c: Data) => c.isCardSelected && card.name === c.name).length;
+  checkIfHas4CardsWithSameNameAdded(card: IData): boolean {
+    this.numberOfCardsWithSameName = this.cards.filter((c: IData) => c.isCardSelected && card.name === c.name).length;
     if(this.numberOfCardsWithSameName >= 4 && !card.isCardSelected) {
       this.openSnackBar('You can only add 4 cards with the same name!');
       return true;
@@ -128,21 +128,15 @@ export class EditDeckFormComponent implements OnInit {
     return false;
   }
 
-  updateDataSource(cards: Array<Data>) {
-    this.dataSource = new MatTableDataSource<Data>(cards);
-
-    this.dataSource.filterPredicate = function(data, filter: string): boolean {
-      return data.name.toLowerCase().includes(filter);
-    };
-
-    this.filterValue = this.filterValue.trim().toLowerCase();
-    this.dataSource.filter = this.filterValue;
+  updateDataSource(cards: Array<IData>) {
+    this.dataSource = new MatTableDataSource<IData>(cards);
+    this.applyFilter();
   }
 
   editDeck() {
-    let deck: Ideck = {
+    let deck: IDeck = {
       id: this.deck.id,
-      cards: this.cards.filter((c: Data) => c.isCardSelected === true),
+      cards: this.cards.filter((c: IData) => c.isCardSelected === true),
       name: this.form.value.name,
       userEmail: localStorage.getItem('login') || ''
     };
@@ -175,6 +169,4 @@ export class EditDeckFormComponent implements OnInit {
   closeDialog() {
     this.dialogRef.close();
   }
-
-
 }
