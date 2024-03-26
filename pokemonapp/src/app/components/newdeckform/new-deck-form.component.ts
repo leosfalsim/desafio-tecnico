@@ -23,7 +23,7 @@ export class NewdeckFormComponent implements OnInit {
 
   public cards: Array<IData> = [];
 
-  public displayedColumns: string[] = ['images', 'name', 'supertype', 'level', 'hp', 'rarity', 'select'];
+  public displayedColumns: string[] = ['images', 'name', 'supertype', 'level', 'hp', 'rarity', 'hpXlevel', 'select'];
   public dataSource = new MatTableDataSource<IData>();
 
   public form!: FormGroup;

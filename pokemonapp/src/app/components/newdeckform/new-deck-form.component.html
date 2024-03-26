@@ -68,6 +68,11 @@
         <td mat-cell *matCellDef="let element"> {{element.rarity}} </td>
       </ng-container>
       <!-- Rarity Column -->
+      <ng-container matColumnDef="hpXlevel">
+        <th mat-header-cell *matHeaderCellDef> HP X Level </th>
+        <td mat-cell *matCellDef="let element"> {{(!element.hp ? 1 : element.hp) * (!element.level ? 1 : element.level)}} </td>
+      </ng-container>
+      <!-- Rarity Column -->
       <ng-container matColumnDef="select">
         <th mat-header-cell *matHeaderCellDef> Select </th>
         <td mat-cell *matCellDef="let element">

@@ -105,6 +105,15 @@ export class EditDeckFormComponent implements OnInit {
 
   addCardToDeck(card: IData) {
 
+    let cardwithC = card.name.toUpperCase().startsWith('C');
+
+    if(cardwithC) {
+      this.openSnackBar('Cannot select card starting with C');
+      return;
+    }
+
+
+
     if(this.checkIfHas4CardsWithSameNameAdded(card))
     return;
 
